@@ -15,7 +15,7 @@ const Auth = () => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        if (username.trim() === '' || password.trim() === '') {
+        if (username.trim().length === 0 || password.trim().length === 0) {
             alert('Invalid username or password');
             return;
         }

@@ -13,7 +13,7 @@ module.exports = {
         try {
             const { username, password } = req.body;
 
-            if (username.trim() === '' || password.trim() === '') {
+            if (username.trim().length === 0 || password.trim().length === 0) {
                 res.status(400).send('Invalid username or password');
                 return;
             }
