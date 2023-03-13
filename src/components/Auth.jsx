@@ -25,8 +25,7 @@ const Auth = () => {
             password
         }
 
-        const endpoint = register ? 'register' : 'login';
-        const url = `http://localhost:4545/${endpoint}`;
+        const url = register ? '/register' : '/login';
 
         axios.post(url, body)
         .then(res => {
