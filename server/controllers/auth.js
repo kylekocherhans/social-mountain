@@ -49,8 +49,7 @@ module.exports = {
             let foundUser = await User.findOne({where: {username: username}});
 
             if (foundUser) {
-                // TODO use foundUser.dataType.hashedPass?
-                const isAuthenticated = bcrypt.compareSync(password, foundUser.hashedPass);
+                const isAuthenticated = bcrypt.compareSync(password, foundUser.dataValues.hashedPass);
 
                 if (isAuthenticated) {
                     const token = createToken(foundUser.dataValues.username, foundUser.dataValues.id);
@@ -63,7 +62,7 @@ module.exports = {
                         exp: exp
                     });
                 } else {
-                    res.status(400).send('Something went worng. Cannot log in.');
+                    res.status(400).send('Something went wrong. Cannot log in.');
                 }
             } else {
                 res.status(400).send("Couldn't find user with that username. Cannot log in.");
